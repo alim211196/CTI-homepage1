@@ -60,7 +60,7 @@ const ConnectSection = () => {
         >
           {/* Left Side */}
           <Box sx={{ flex: 1, textAlign: "left", position: "relative" }}>
-            <Typography variant="body1" fontWeight="500" color="text.secondary">
+            <Typography variant="body1" fontWeight="500" sx={{color: "neutral.black"}}>
               we connect the
             </Typography>
 
@@ -107,7 +107,7 @@ const ConnectSection = () => {
 
           {/* Right Side */}
           <Box sx={{ flex: 1, textAlign: "right", position: "relative" }}>
-            <Typography variant="body1" fontWeight="500" color="text.secondary">
+            <Typography variant="body1" fontWeight="500" sx={{color: "neutral.black"}}>
               with the best
             </Typography>
 

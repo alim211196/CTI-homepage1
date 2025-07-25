@@ -48,7 +48,7 @@ const testimonialsData = [
   {
     name: "Charlie Smith",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    color: "#FF4939",
+    color: "#FCE297",
     rotate: "3deg",
     avatar: image4,
     zIndex: 2,
@@ -63,18 +63,20 @@ const testimonialsData = [
 ];
 
 const Testimonials = () => {
-  const boxRef = useRef(null); // 🔸 Ref for the green container
+  const boxRef = useRef(null);
 
   const scatteredPositions = useMemo(() => {
-    const centerX = 600;
-    const centerY = 300;
-    return testimonialsData.map(() => {
-      const offsetX = (Math.random() - 0.9) * 300;
-      const offsetY = (Math.random() - 0.9) * 200;
-      return {
-        top: centerY + offsetY,
-        left: centerX + offsetX,
-      };
+    const radius = 200; // base distance from center
+    const spread = 60; // additional max random spread
+    const centerX = 500; // adjust based on box width or set dynamically
+    const centerY = 180; // adjust based on box height or set dynamically
+
+    return testimonialsData.map((_, i) => {
+      const angle = (i / testimonialsData.length) * 2 * Math.PI; // spread around full circle
+      const randomRadius = radius + Math.random() * spread;
+      const left = centerX + Math.cos(angle) * randomRadius;
+      const top = centerY + Math.sin(angle) * randomRadius;
+      return { top, left };
     });
   }, []);
 
@@ -95,14 +97,38 @@ const Testimonials = () => {
         }}
       >
         <Typography
-          variant="h4"
+          variant="body1"
           sx={{
-            color: "primary.main",
+            color: "primary.light",
             fontWeight: 600,
             position: "absolute",
             top: 24,
-            left: 24,
+            left: 32,
             zIndex: 10,
+          }}
+        >
+          Our
+        </Typography>
+        <Typography
+          variant="h3"
+          fontWeight="bold"
+          sx={{
+            position: "absolute",
+            top: 40,
+            left: 32,
+            zIndex: 15,
+            color: "secondary.main",
+            fontWeight: 600,
+            transition: "all 0.3s ease",
+            cursor: "pointer",
+            display: "inline-block",
+            "&:hover": {
+              color: "primary.light",
+              textShadow: "0 2px 6px rgba(56, 56, 56, 0.2)",
+              transform: "scale(1.25)",
+              textDecoration: "none",
+            },
+            fontFamily: "ui-serif",
           }}
         >
           Testimonials
@@ -115,7 +141,7 @@ const Testimonials = () => {
             <motion.div
               key={index}
               drag
-              dragConstraints={boxRef} // 🔸 Constrain to green box
+              dragConstraints={boxRef}
               style={{
                 position: "absolute",
                 top,

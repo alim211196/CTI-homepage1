@@ -14,17 +14,29 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import logo from "../../assets/logo.png";
 
-const navItems = [
-  { label: "About", href: "#about-us" },
-  { label: "Features", href: "#features" },
-  {
-    label: "Value Proposition",
+// const navItems = [
+//   { label: "About", href: "#about-us" },
+//   { label: "Features", href: "#features" },
+//   {
+//     label: "Value Proposition",
 
-    href: "#value-proposition",
+//     href: "#value-proposition",
+//   },
+//   { label: "Coaches", href: "#coaches" },
+//   { label: "Coach Match", href: "#coaches-match" },
+//   { label: "Testimonials", href: "#testimonials" },
+// ];
+
+const navItems = [
+  { label: "Home", href: "#" },
+  { label: "For Coaches", href: "#" },
+  { label: "Coach Levels", href: "#" },
+  {
+    label: "Find Coaches",
+    href: "#",
   },
-  { label: "Coaches", href: "#coaches" },
-  { label: "Coach Match", href: "#coaches-match" },
-  { label: "Testimonials", href: "#testimonials" },
+  { label: "Coach Match Quiz", href: "#" },
+  { label: "Organizational Needs", href: "#" },
 ];
 
 const Footer = () => {
@@ -36,15 +48,16 @@ const Footer = () => {
         textAlign: "center",
         color: "white",
         position: "relative",
-        //background: `linear-gradient(360deg, #85151C, #CB1C1B 20%, #FF4939 45%, #FCC380 70%, #FCE297)`,
-        // background: `radial-gradient(ellipse at bottom center, #85151C 0%, #CB1C1B 25%, #FF4939 50%, #FCC380 75%, #FCE297 100%)`
-
         "--primary-light": "34 100% 70%",
-        background: `radial-gradient(
-          ellipse at bottom center,
-          hsl(var(--primary-light)) 0%,
-          hsl(var(--primary-light) / 0) 100%
-        )`,
+        background: `
+          linear-gradient(
+            to top,
+            hsl(var(--primary-light)) 0%,
+            hsl(var(--primary-light) / 0.8) 30%,
+            hsl(var(--primary-light) / 0.4) 60%,
+            white 100%
+          )
+    `,
       }}
     >
       {/* Background overlay if needed */}
@@ -137,7 +150,7 @@ const Footer = () => {
         {/* Copyright */}
         <Typography
           variant="caption"
-          sx={{ pb: 6, display: "block", opacity: 0.7, color: "primary.light"}}
+          sx={{ pb: 6, display: "block", opacity: 0.7, color: "primary.light" }}
         >
           &copy; {new Date().getFullYear()} CTI. All rights reserved
         </Typography>

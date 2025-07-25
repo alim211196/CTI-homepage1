@@ -8,11 +8,12 @@ import {
   Avatar,
 } from "@mui/material";
 import { motion, useInView } from "framer-motion";
-import image1 from "../../assets/features/image1.jpg";
-import image2 from "../../assets/features/image2.jpg";
-import image3 from "../../assets/features/image3.jpg";
-import image4 from "../../assets/features/image4.jpg";
-import image5 from "../../assets/features/image5.jpg";
+import image1 from "../../assets/features/image1.png";
+import image2 from "../../assets/features/image2.png";
+import image3 from "../../assets/features/image3.png";
+import image4 from "../../assets/features/image4.png";
+import image5 from "../../assets/features/image5.png";
+import bg_img from "../../assets/bg_img.png";
 
 const platform_features = [
   {
@@ -22,7 +23,7 @@ const platform_features = [
   },
   {
     image: image2,
-    title: "Best Programm",
+    title: "Best Program",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
   },
   {
@@ -32,7 +33,7 @@ const platform_features = [
   },
   {
     image: image4,
-    title: "Organization Support Service",
+    title: "Organization Support",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
   },
   {
@@ -72,7 +73,20 @@ const Features = () => {
     platform_features[0]; // fallback
 
   return (
-    <Box ref={ref} sx={{ backgroundColor: "#fce2978a", py: { xs: 6, md: 12 } }}>
+    <Box
+      ref={ref}
+      sx={{
+        overflow: "hidden",
+        backgroundImage: `url(${bg_img})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: {
+          xs: "cover", // cover full area on small screens
+          sm: "contain", // keep aspect ratio on medium+
+          md: "contain",
+        },
+        py: { xs: 6, md: 12 },
+      }}
+    >
       <Container maxWidth="lg">
         <Stack
           direction={{ xs: "column", md: "row" }}
@@ -82,8 +96,11 @@ const Features = () => {
           {/* Left Content */}
           <Box flex={1}>
             <Typography
-              variant="overline"
-              sx={{ color: "primary.main", textTransform: "uppercase" }}
+              variant="body1"
+              sx={{
+                color: "primary.light",
+                fontWeight: 600,
+              }}
             >
               Platform Features
             </Typography>
@@ -96,9 +113,22 @@ const Features = () => {
                 transition={{ duration: 0.6 }}
               >
                 <Typography
-                  variant="h4"
+                  variant="h3"
                   fontWeight="bold"
-                  sx={{ mt: 1, color: "secondary.main" }}
+                  sx={{
+                    color: "secondary.main",
+                    fontWeight: 600,
+                    transition: "all 0.3s ease",
+                    cursor: "pointer",
+                    display: "inline-block",
+                    "&:hover": {
+                      color: "primary.light",
+                      textShadow: "0 2px 6px rgba(56, 56, 56, 0.2)",
+                      transform: "scale(1.25)",
+                      textDecoration: "none",
+                    },
+                    fontFamily: "ui-serif",
+                  }}
                 >
                   {activeFeature.title}
                 </Typography>

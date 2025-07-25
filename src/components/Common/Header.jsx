@@ -29,19 +29,32 @@ import JoinAsCoach from "./JoinAsCoach";
 import HireCoach from "./HireCoach";
 import logo from "../../assets/logo.png";
 
+// const navItems = [
+//   { label: "Home", icon: <HomeIcon />, href: "#" },
+//   { label: "About", icon: <InfoIcon />, href: "#about-us" },
+//   { label: "Features", icon: <StarIcon />, href: "#features" },
+//   {
+//     label: "Value Proposition",
+//     icon: <EmojiObjectsIcon />,
+//     href: "#value-proposition",
+//   },
+//   { label: "Coaches", icon: <GroupIcon />, href: "#coaches" },
+//   { label: "Coach Match", icon: <HelpIcon />, href: "#coaches-match" },
+//   { label: "Testimonials", icon: <ForumIcon />, href: "#testimonials" },
+//   { label: "Newsletter", icon: <MailOutlineIcon />, href: "#newsletter" },
+// ];
+
 const navItems = [
   { label: "Home", icon: <HomeIcon />, href: "#" },
-  { label: "About", icon: <InfoIcon />, href: "#about-us" },
-  { label: "Features", icon: <StarIcon />, href: "#features" },
+  { label: "For Coaches", icon: <InfoIcon />, href: "#" },
+  { label: "Coach Levels", icon: <StarIcon />, href: "#" },
   {
-    label: "Value Proposition",
+    label: "Find Coaches",
     icon: <EmojiObjectsIcon />,
-    href: "#value-proposition",
+    href: "#",
   },
-  { label: "Coaches", icon: <GroupIcon />, href: "#coaches" },
-  { label: "Coach Match", icon: <HelpIcon />, href: "#coaches-match" },
-  { label: "Testimonials", icon: <ForumIcon />, href: "#testimonials" },
-  { label: "Newsletter", icon: <MailOutlineIcon />, href: "#newsletter" },
+  { label: "Coach Match Quiz", icon: <GroupIcon />, href: "#" },
+  { label: "Organizational Needs", icon: <HelpIcon />, href: "#" },
 ];
 
 const Header = () => {
@@ -76,14 +89,14 @@ const Header = () => {
         }}
       >
         <Container maxWidth="xl">
-          <Toolbar sx={{ justifyContent: "space-between", py: 2 }}>
+          <Toolbar sx={{ justifyContent: "space-between", py: 0.5 }}>
             {/* Logo */}
             <Box
               component="a"
               href="/"
               sx={{ display: "flex", alignItems: "center" }}
             >
-              <Box component="img" src={logo} alt="Logo" sx={{ height: 48 }} />
+              <Box component="img" src={logo} alt="Logo" sx={{ width: "200px", height: "auto" }} />
             </Box>
 
             {/* Navigation Menu */}

@@ -84,19 +84,46 @@ const CoachMatch = () => {
 
   return (
     <>
-      <Box sx={{ py: 10, backgroundColor: "#fce2978a" }}>
+      <Box
+        sx={{
+          py: 10,
+          background: `linear-gradient(
+                        to bottom,
+                        white 0%,
+                        #fce2978a 30%,
+                        #fce2978a 70%,
+                        white 100%
+                      )`,
+        }}
+      >
         <Container maxWidth="xl">
           <Box sx={{ textAlign: "center", mb: 6 }}>
             <Typography
-              variant="overline"
-              color="primary.light"
-              sx={{ fontWeight: 600, mb: 1 }}
+              variant="body1"
+              sx={{
+                color: "primary.light",
+                fontWeight: 600,
+              }}
             >
               Coach Match
             </Typography>
             <Typography
-              variant="h4"
-              sx={{ fontWeight: "bold", mb: 2, color: "#1A1A2E" }}
+              variant="h3"
+              fontWeight="bold"
+              sx={{
+                color: "secondary.main",
+                fontWeight: 600,
+                transition: "all 0.3s ease",
+                cursor: "pointer",
+                display: "inline-block",
+                "&:hover": {
+                  color: "primary.light",
+                  textShadow: "0 2px 6px rgba(56, 56, 56, 0.2)",
+                  transform: "scale(1.25)",
+                  textDecoration: "none",
+                },
+                fontFamily: "ui-serif",
+              }}
             >
               Level up your people development
             </Typography>
@@ -149,25 +176,28 @@ const CoachMatch = () => {
                         >
                           {step.title}
                         </Typography>
-                        <Typography
-                          variant="body1"
-                          color="text.secondary"
-                          mb={1.5}
-                        >
+                        <Typography variant="body1" mb={1.5}>
                           {step.description}
                         </Typography>
                         {step.buttonText !== "Start coaching" ? (
                           <Button
-                            variant={"outlined"}
+                            variant="outlined"
                             size="medium"
                             sx={{
                               backgroundColor: "transparent",
-                              color: "inherit",
+                              color: "#FF4939",
                               px: 3,
                               py: 1,
                               fontWeight: 600,
                               borderRadius: 8,
                               textTransform: "none",
+                              borderColor: "#FF4939",
+                              transition: "all 0.3s ease",
+                              "&:hover": {
+                                background:
+                                  "linear-gradient(135deg, #FCC380 0%, #fff6da 100%)",
+                                borderColor: "#fcb96eff",
+                              },
                             }}
                           >
                             {step.buttonText}

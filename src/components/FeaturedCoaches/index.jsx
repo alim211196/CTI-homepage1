@@ -70,13 +70,37 @@ const FeaturedCoaches = () => {
       <Box sx={{ py: { xs: 8, md: 5 } }}>
         {/* Header */}
         <Box textAlign="center" mb={6}>
-          <Typography variant="h4" fontWeight={700}>
-            Meet Our{" "}
-            <Box component="span" color="primary.light">
-              Coaches
-            </Box>
+          <Typography
+            variant="body1"
+            sx={{
+              color: "primary.light",
+              fontWeight: 600,
+            }}
+          >
+            Meet Our
           </Typography>
-          <Typography variant="body1" mt={1} color="text.secondary">
+          <Typography
+            variant="h2"
+            fontWeight="bold"
+            sx={{
+              color: "secondary.main",
+              fontWeight: 600,
+              transition: "all 0.3s ease",
+              cursor: "pointer",
+              display: "inline-block",
+              "&:hover": {
+                color: "primary.light",
+                textShadow: "0 2px 6px rgba(56, 56, 56, 0.2)",
+                transform: "scale(1.25)",
+                textDecoration: "none",
+              },
+              fontFamily: "ui-serif",
+            }}
+          >
+            Coaches
+          </Typography>
+
+          <Typography variant="body1" mt={1} sx={{ color: "neutral.black" }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </Typography>

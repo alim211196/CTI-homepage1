@@ -14,6 +14,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import HireCoach from "../Common/HireCoach";
 import image1 from "../../assets/valueproposition/image1.jpg";
 import image2 from "../../assets/valueproposition/image2.jpg";
+import map_dot from "../../assets/featuredcoaches/map-dot.png";
 
 const leftContent = [
   {
@@ -81,16 +82,50 @@ const ValueProposition = () => {
         position: "relative",
         py: { xs: 6, sm: 8, md: 10 },
         mb: { xs: 0, sm: 0, md: 60 },
+        backgroundImage: `url(${map_dot})`,
+        backgroundRepeat: "repeat",
+        backgroundSize: {
+          xs: "cover", // cover full area on small screens
+          sm: "contain", // keep aspect ratio on medium+
+          md: "contain",
+        },
       }}
     >
       <Container maxWidth="xl">
         {/* Header */}
         <Box textAlign="center" mb={6}>
-          <Typography variant="h4" fontWeight={700}>
-            Value{" "}
-            <Box component="span" color="primary.light">
-              Proposition
-            </Box>
+          <Typography
+            variant="body1"
+            sx={{
+              color: "primary.light",
+              fontWeight: 600,
+            }}
+          >
+            Value
+          </Typography>
+          <Typography
+            variant="h2"
+            fontWeight="bold"
+            sx={{
+              color: "secondary.main",
+              fontWeight: 600,
+              transition: "all 0.3s ease",
+              cursor: "pointer",
+              display: "inline-block",
+              "&:hover": {
+                color: "primary.light",
+                textShadow: "0 2px 6px rgba(56, 56, 56, 0.2)",
+                transform: "scale(1.25)",
+                textDecoration: "none",
+              },
+              fontFamily: "ui-serif",
+            }}
+          >
+            Proposition
+          </Typography>
+          <Typography variant="body1" mt={1} sx={{ color: "neutral.black" }}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </Typography>
         </Box>
 
@@ -172,7 +207,7 @@ const ValueProposition = () => {
                   <JoinAsCoach />
                 </Box>
                 <Box mt={4}>
-                  <Paper elevation={6} sx={{ p: 4 }}>
+                  <Paper elevation={6} sx={{ p: 4, borderRadius: "12px" }}>
                     {leftContent.map((item, idx) => (
                       <motion.div
                         key={idx}
@@ -186,7 +221,7 @@ const ValueProposition = () => {
                           <Box
                             sx={{
                               backgroundColor: "#fce2978a",
-                              borderRadius: "6px",
+                              borderRadius: "12px",
                               alignItems: "center",
                               padding: "14px",
                               display: "flex",
@@ -206,7 +241,7 @@ const ValueProposition = () => {
                               {item.title}
                             </Typography>
                           </Box>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2">
                             {item.text}
                           </Typography>
                         </Box>
@@ -241,7 +276,7 @@ const ValueProposition = () => {
                     zIndex: 1,
                   }}
                 >
-                  <Paper elevation={6} sx={{ p: 4 }}>
+                  <Paper elevation={6} sx={{ p: 4, borderRadius: "12px" }}>
                     {leftContent.map((item, idx) => (
                       <motion.div
                         key={idx}
@@ -255,7 +290,7 @@ const ValueProposition = () => {
                           <Box
                             sx={{
                               backgroundColor: "#fce2978a",
-                              borderRadius: "6px",
+                              borderRadius: "12px",
                               alignItems: "center",
                               padding: "14px",
                               display: "flex",
@@ -275,7 +310,7 @@ const ValueProposition = () => {
                               {item.title}
                             </Typography>
                           </Box>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2">
                             {item.text}
                           </Typography>
                         </Box>
@@ -359,7 +394,7 @@ const ValueProposition = () => {
                   <HireCoach />
                 </Box>
                 <Box mt={4}>
-                  <Paper elevation={6} sx={{ p: 4 }}>
+                  <Paper elevation={6} sx={{ p: 4, borderRadius: "12px" }}>
                     {rightContent.map((item, idx) => (
                       <motion.div
                         key={idx}
@@ -373,7 +408,7 @@ const ValueProposition = () => {
                           <Box
                             sx={{
                               backgroundColor: "#ff4a39a9",
-                              borderRadius: "6px",
+                              borderRadius: "12px",
                               alignItems: "center",
                               padding: "14px",
                               display: "flex",
@@ -393,7 +428,7 @@ const ValueProposition = () => {
                               {item.title}
                             </Typography>
                           </Box>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2">
                             {item.text}
                           </Typography>
                         </Box>
@@ -428,7 +463,7 @@ const ValueProposition = () => {
                     zIndex: 1,
                   }}
                 >
-                  <Paper elevation={6} sx={{ p: 4 }}>
+                  <Paper elevation={6} sx={{ p: 4, borderRadius: "12px" }}>
                     {rightContent.map((item, idx) => (
                       <motion.div
                         key={idx}
@@ -442,7 +477,7 @@ const ValueProposition = () => {
                           <Box
                             sx={{
                               backgroundColor: "#ff4a39a9",
-                              borderRadius: "6px",
+                              borderRadius: "12px",
                               alignItems: "center",
                               padding: "14px",
                               display: "flex",
@@ -462,7 +497,7 @@ const ValueProposition = () => {
                               {item.title}
                             </Typography>
                           </Box>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2">
                             {item.text}
                           </Typography>
                         </Box>

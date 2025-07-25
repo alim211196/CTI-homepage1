@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { Global, css } from "@emotion/react";
+import map_dot from "../../assets/featuredcoaches/map-dot.png";
 
 const Newsletter = () => {
   return (
@@ -48,7 +49,7 @@ const Newsletter = () => {
           justifyContent: "center",
           alignItems: "center",
           flexDirection: "column",
-          backgroundImage: "url('/src/assets/featuredcoaches/map-dot.png')",
+          backgroundImage: `url(${map_dot})`,
           backgroundSize: {
             xs: "cover", // cover full area on small screens
             sm: "contain", // keep aspect ratio on medium+

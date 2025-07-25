@@ -203,7 +203,6 @@ const CardComponent = ({ card }) => (
       <Typography
         className="home-talented_person-position"
         variant="caption"
-        color="text.secondary"
       >
         {card.title}
       </Typography>

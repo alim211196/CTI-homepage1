@@ -94,7 +94,6 @@ const CoachWrapper = () => {
               <Typography
                 className="home-talented_person-position"
                 variant="caption"
-                color="text.secondary"
               >
                 {person.position}
               </Typography>

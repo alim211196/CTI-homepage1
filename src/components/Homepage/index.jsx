@@ -12,6 +12,7 @@ import CoachMatch from "../CoachMatch";
 import Testimonials from "../Testimonials";
 import HeroSection1 from "./HeroSection1";
 import ShuffleHero from "./ShuffleHero";
+import Faqs from "../Faqs";
 
 const Homepage = () => {
   return (
@@ -35,6 +36,9 @@ const Homepage = () => {
       </Box>
       <Box id="testimonials" sx={{ scrollMarginTop: "100px" }}>
         <Testimonials />
+      </Box>
+      <Box id="faqs" sx={{ scrollMarginTop: "100px" }}>
+        <Faqs />
       </Box>
       <Box id="newsletter" sx={{ scrollMarginTop: "100px" }}>
         <Newsletter />
