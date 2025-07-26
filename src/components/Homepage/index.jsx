@@ -10,15 +10,17 @@ import ValueProposition from "../ValueProposition";
 import Features from "../Features";
 import CoachMatch from "../CoachMatch";
 import Testimonials from "../Testimonials";
-import HeroSection1 from "./HeroSection1";
+// import HeroSection1 from "./HeroSection1";
 import ShuffleHero from "./ShuffleHero";
 import Faqs from "../Faqs";
+import ImageGridHero from "./ImageGridHero";
 
 const Homepage = () => {
   return (
     <>
       <Header />
-      <ShuffleHero />
+      {/* <ShuffleHero /> */}
+      <HeroSection />
       <Box id="about-us" sx={{ scrollMarginTop: "100px" }}>
         <AboutUs />
       </Box>

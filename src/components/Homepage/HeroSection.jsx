@@ -1,213 +1,180 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Avatar, Box, Paper, Typography } from "@mui/material";
-import { motion, useScroll, useTransform, useMotionValue } from "framer-motion";
+import { Box, Container, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import LineLoader from "./LineLoader";
 import image1 from "../../assets/herosection/image1.jpg";
 import image2 from "../../assets/herosection/image2.jpg";
 import image3 from "../../assets/herosection/image3.jpg";
 import image4 from "../../assets/herosection/image4.jpg";
 import image5 from "../../assets/herosection/image5.jpg";
-import image6 from "../../assets/herosection/image6.jpg";
 import image7 from "../../assets/herosection/image7.jpg";
 import image8 from "../../assets/herosection/image8.jpg";
-import checkmark from "../../assets/coachmatch/checkmark.svg";
+import image9 from "../../assets/herosection/image9.jpeg";
 
-const cardData = [
-  {
-    name: "Henrik",
-    title: "AI Architect",
-    img: image1,
-  },
-  {
-    name: "Eva",
-    title: "AI Developer",
-    img: image2,
-  },
-  {
-    name: "Michael",
-    title: "AI Architect",
-    img: image3,
-  },
-  {
-    name: "Wojtek",
-    title: "AI Engineer",
-    img: image4,
-  },
-  {
-    name: "Lena",
-    title: "AI Scientist",
-    img: image5,
-  },
-  {
-    name: "Carlos",
-    title: "ML Engineer",
-    img: image6,
-  },
-  {
-    name: "Anya",
-    title: "Data Scientist",
-    img: image7,
-  },
-  {
-    name: "Tom",
-    title: "AI Strategist",
-    img: image8,
-  },
+const images = [
+  { id: 1, src: image1 },
+  { id: 2, src: image2 },
+  { id: 3, src: image3 },
+  { id: 4, src: image4 },
+  { id: 5, src: image5 },
+  { id: 6, src: image7 },
+  { id: 7, src: image8 },
+  { id: 8, src: image9 },
 ];
 
 const HeroSection = () => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-
-  const textOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
-
-  const [randomPositions, setRandomPositions] = useState([]);
+  const [scale, setScale] = useState(2);
 
   useEffect(() => {
-    const radius = 40; // distance in vh/vw away from center
-    const centerTop = 50;
-    const centerLeft = 50;
+    let isScrollLocked = false;
 
-    const positions = cardData.map((_, index) => {
-      const angle = (index / cardData.length) * 2 * Math.PI; // spread around full circle
+    const handleScroll = () => {
+      const section = document.getElementById("hero-trigger");
+      if (!section) return;
 
-      const top = `${centerTop + radius * Math.sin(angle)}vh`;
-      const left = `${centerLeft + radius * Math.cos(angle)}vw`;
+      const scrollTop = window.scrollY;
+      const offsetTop = section.offsetTop;
+      const height = section.offsetHeight;
 
-      return { top, left };
-    });
+      const progress = Math.min(
+        Math.max((scrollTop - offsetTop) / height, 0),
+        1
+      );
+      const minScale = 2;
+      const maxScale = 15;
+      const newScale = minScale + (maxScale - minScale) * progress;
+      setScale(newScale);
 
-    setRandomPositions(positions);
+      const unlockThreshold = 1;
+
+      if (progress < unlockThreshold) {
+        if (!isScrollLocked) {
+          // Lock scroll by keeping user inside the section
+          const lockPosition = offsetTop + height * 0.99;
+          if (scrollTop > lockPosition) {
+            window.scrollTo({ top: lockPosition, behavior: "auto" });
+          }
+          isScrollLocked = true;
+        }
+      } else {
+        isScrollLocked = false;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
-  return (
-    <Box
-      ref={ref}
-      sx={{
-        position: "relative",
-        height: "100vh",
-        bgcolor: "#fce2978a",
-        overflow: "hidden",
-      }}
-    >
-      <LineLoader />
+  const progress = (scale - 2) / (15 - 2);
+  const lerp = (a, b) => a + (b - a) * progress;
 
-      {/* Centered Heading */}
-      <motion.div
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          textAlign: "center",
-          zIndex: 10,
-          opacity: textOpacity,
+  return (
+    <>
+      <Box
+        id="hero-trigger"
+        sx={{
+          height: "600vh",
+          position: "relative",
         }}
       >
-        <Typography variant="h3" fontWeight={700}>
-          Find your work and your people
-        </Typography>
-        <Typography sx={{ maxWidth: 500, mt: 2, mx: "auto" }}>
-          Join the leading community of AI experts to learn, advance, and
-          collaborate on AI projects.
-        </Typography>
-      </motion.div>
+        <Box
+          sx={{
+            position: "sticky",
+            top: 0,
+            height: "100vh",
+            overflow: "hidden",
+            bgcolor: "#fce2978a",
+          }}
+        >
+          <Container maxWidth="lg">
+            <LineLoader />
 
-      {/* Cards */}
-      {cardData.map((card, index) => {
-        const gridRow = Math.floor(index / 4);
-        const gridCol = index % 4;
+            {/* Background Grid Image Layer */}
+            <Box
+              sx={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "center",
+                alignContent: "center",
+                zIndex: 3,
+              }}
+            >
+              {images.map((image, index) => {
+                const initialOffset = [
+                  { x: -30, y: -44 },
+                  { x: 15, y: -20 },
+                  { x: -10, y: -70 },
+                  { x: 20, y: -15 },
+                  { x: -20, y: -15 },
+                  { x: 25, y: 10 },
+                  { x: 10, y: 40 },
+                  { x: -15, y: -10 },
+                ][index % 8];
 
-        const finalTop = `${5 + gridRow * 40}vh`;
-        const finalLeft = `${10 + gridCol * 22}vw`;
+                const translateX = lerp(initialOffset.x, 0);
+                const translateY = lerp(initialOffset.y, 0);
+                const imageWidth = lerp(30, 100); // Scale width from 30% to 100%
 
-        const initialTop = randomPositions[index]?.top || "50vh";
-        const initialLeft = randomPositions[index]?.left || "50vw";
+                return (
+                  <Box
+                    key={image.id}
+                    sx={{
+                      width: "25%",
+                      height: "50%",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Box
+                      component="img"
+                      src={image.src}
+                      alt={`img-${image.id}`}
+                      sx={{
+                        width: `${imageWidth}%`,
+                        borderRadius: "8px",
+                        transform: `translate(${translateX}px, ${translateY}px)`,
+                        transition: "all 0.3s ease-out",
+                        boxShadow: 3,
+                      }}
+                    />
+                  </Box>
+                );
+              })}
+            </Box>
 
-        const top = useTransform(
-          scrollYProgress,
-          [0, 0.5, 0.75],
-          [initialTop, finalTop, finalTop]
-        );
-        const left = useTransform(
-          scrollYProgress,
-          [0, 0.5, 0.75],
-          [initialLeft, finalLeft, finalLeft]
-        );
-        const scale = useTransform(
-          scrollYProgress,
-          [0, 0.5, 0.75],
-          [0.8, 1.4, 1.4]
-        );
-
-        const zIndex = useTransform(scrollYProgress, [0, 1], [5, 15]);
-
-        return (
-          <motion.div
-            key={index}
-            style={{
-              position: "absolute",
-              top,
-              left,
-              transform: "translate(-50%, -50%)",
-              scale,
-              zIndex,
-            }}
-          >
-            <CardComponent card={card} />
-          </motion.div>
-        );
-      })}
-    </Box>
+            {/* Centered Heading */}
+            <Box
+              sx={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                textAlign: "center",
+                zIndex: 2,
+                opacity: `${1 - progress}`,
+                transition: "opacity 0.3s ease-out",
+              }}
+            >
+              <Typography variant="h2" fontWeight={700}>
+                Find your work and your people
+              </Typography>
+              <Typography sx={{ maxWidth: 500, mt: 2, mx: "auto" }}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt.
+              </Typography>
+            </Box>
+          </Container>
+        </Box>
+      </Box>
+    </>
   );
 };
-
-const CardComponent = ({ card }) => (
-  <Paper elevation={6} gap={2}>
-    <Box
-      sx={{
-        position: "relative",
-        width: 100,
-        textAlign: "center",
-      }}
-    >
-      <Avatar
-        src={card.img}
-        alt={card.name}
-        sx={{ width: 60, height: 60, mx: "auto" }}
-      />
-      <Box
-        component="img"
-        src={checkmark}
-        alt="checkmark"
-        className="home-talented_checkmark"
-        sx={{
-          width: 16,
-          height: 16,
-          position: "absolute",
-          top: 0,
-          right: 5,
-        }}
-      />
-      <Typography
-        className="home-talented_person-name"
-        variant="subtitle2"
-        fontWeight={600}
-        mt={1}
-      >
-        {card.name}
-      </Typography>
-      <Typography
-        className="home-talented_person-position"
-        variant="caption"
-      >
-        {card.title}
-      </Typography>
-    </Box>
-  </Paper>
-);
 
 export default HeroSection;

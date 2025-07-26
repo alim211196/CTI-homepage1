@@ -72,25 +72,13 @@ const AboutUs = () => {
       sx={{
         position: "relative",
         color: "black",
-        "--primary-light": "34 100% 70%",
         background: `linear-gradient(
-                      to bottom,
-                      hsl(var(--primary-light)) 0%,
-                      hsl(var(--primary-light) / 0.5) 50%,
-                      white 100%
-                    )`,
-
-// "--primary-light": "34 100% 70%",
-// background: `linear-gradient(
-//   to bottom,
-//   white 0%,
-//   hsl(var(--primary-light) / 0.5) 40%,
-//   hsl(var(--primary-light)) 50%,
-//   hsl(var(--primary-light) / 0.5) 60%,
-//   white 100%
-// )`
-
-        py: { xs: 8, md: 10 },
+      to bottom,
+      #fce2978a 0%,
+      hsl(34 100% 70% / 0.5) 50%,
+      white 100%
+    )`,
+        py: { xs: 4, md: 4 },
         overflow: "hidden",
       }}
     >
