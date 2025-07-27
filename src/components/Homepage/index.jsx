@@ -20,7 +20,8 @@ const Homepage = () => {
     <>
       <Header />
       {/* <ShuffleHero /> */}
-      <HeroSection />
+      {/* <HeroSection /> */}
+      <ImageGridHero />
       <Box id="about-us" sx={{ scrollMarginTop: "100px" }}>
         <AboutUs />
       </Box>
