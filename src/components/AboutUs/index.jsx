@@ -7,9 +7,9 @@ import { motion } from "framer-motion";
 const MotionBox = motion(Box);
 
 const stats = [
-  { label: "Features", value: 80 },
-  { label: "Coaches", value: 100 },
-  { label: "Organizations", value: 120 },
+  { label: "Features", value: 100 },
+  { label: "Coaches", value: 120 },
+  { label: "Organizations", value: 140 },
 ];
 
 const containerVariants = {
