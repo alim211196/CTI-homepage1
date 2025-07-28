@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
 import { Box, Button, Typography, Container } from "@mui/material";
 import { useScroll, useTransform, motion } from "framer-motion";
-import pic1 from "../../assets/herosection/pic1.avif";
-import pic2 from "../../assets/herosection/pic2.avif";
-import pic3 from "../../assets/herosection/pic3.avif";
-import pic4 from "../../assets/herosection/pic4.avif";
-import pic5 from "../../assets/herosection/pic5.avif";
-import pic6 from "../../assets/herosection/pic6.avif";
+import pic1 from "../../assets/herosection/hero5.webp";
+import pic2 from "../../assets/herosection/hero3.webp";
+import pic3 from "../../assets/herosection/hero1.webp";
+import pic4 from "../../assets/herosection/hero2.webp";
+import pic5 from "../../assets/herosection/hero4.webp";
+import pic6 from "../../assets/herosection/hero6.jpg";
 
 const MotionBox = motion(Box);
 
@@ -228,7 +228,7 @@ const Images = ({ scrollYProgress }) => {
         style={{
           backgroundImage: `url(${pic2})`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "top",
           scale,
           x: image4OffsetX,
           y: image4OffsetY,
@@ -242,7 +242,7 @@ const Images = ({ scrollYProgress }) => {
         style={{
           backgroundImage: `url(${pic5})`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "top",
           scale,
           x: image5OffsetX,
           y: image5OffsetY,
@@ -256,7 +256,7 @@ const Images = ({ scrollYProgress }) => {
         style={{
           backgroundImage: `url(${pic6})`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "top",
           scale,
           x: image6OffsetX,
           y: image6OffsetY,
