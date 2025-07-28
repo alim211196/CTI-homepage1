@@ -158,7 +158,7 @@ const AboutUs = () => {
                       sx={{ color: "secondary.main" }}
                     >
                       {counts[idx]}
-                      <span style={{ color: "#FF4939" }}>+</span>
+                      <span style={{ color: "#fcc380" }}>+</span>
                     </Typography>
                     <Typography
                       variant="caption"
