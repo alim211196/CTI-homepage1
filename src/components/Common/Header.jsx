@@ -27,6 +27,7 @@ import HelpIcon from "@mui/icons-material/Help";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import JoinAsCoach from "./JoinAsCoach";
 import HireCoach from "./HireCoach";
+import AIButton from "../AIButton";
 import logo from "../../assets/logo.png";
 
 // const navItems = [
@@ -96,7 +97,12 @@ const Header = () => {
               href="/"
               sx={{ display: "flex", alignItems: "center" }}
             >
-              <Box component="img" src={logo} alt="Logo" sx={{ width: "200px", height: "auto" }} />
+              <Box
+                component="img"
+                src={logo}
+                alt="Logo"
+                sx={{ width: "200px", height: "auto" }}
+              />
             </Box>
 
             {/* Navigation Menu */}
@@ -122,8 +128,8 @@ const Header = () => {
                   ))}
                 </Box>
                 <Box sx={{ display: "flex", gap: 1 }}>
-                  <JoinAsCoach />
-                  <HireCoach />
+                  <AIButton text={"Join As A Coach"} />
+                  <AIButton text={"Hire A Coach"} />
                 </Box>
               </>
             ) : (
@@ -161,8 +167,10 @@ const Header = () => {
             ))}
           </List>
           <Box sx={{ display: "flex", flexDirection: "column", gap: 1, mt: 2 }}>
-            <JoinAsCoach />
-            <HireCoach />
+            {/* <JoinAsCoach />
+            <HireCoach /> */}
+            <AIButton text={"Join As A Coach"} />
+            <AIButton text={"Hire A Coach"} />
           </Box>
         </Box>
       </Drawer>
