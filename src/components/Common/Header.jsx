@@ -15,6 +15,8 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
+  Menu,
+  MenuItem,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
@@ -29,33 +31,18 @@ import JoinAsCoach from "./JoinAsCoach";
 import HireCoach from "./HireCoach";
 import AIButton from "../AIButton";
 import logo from "../../assets/logo.png";
-
-// const navItems = [
-//   { label: "Home", icon: <HomeIcon />, href: "#" },
-//   { label: "About", icon: <InfoIcon />, href: "#about-us" },
-//   { label: "Features", icon: <StarIcon />, href: "#features" },
-//   {
-//     label: "Value Proposition",
-//     icon: <EmojiObjectsIcon />,
-//     href: "#value-proposition",
-//   },
-//   { label: "Coaches", icon: <GroupIcon />, href: "#coaches" },
-//   { label: "Coach Match", icon: <HelpIcon />, href: "#coaches-match" },
-//   { label: "Testimonials", icon: <ForumIcon />, href: "#testimonials" },
-//   { label: "Newsletter", icon: <MailOutlineIcon />, href: "#newsletter" },
-// ];
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import Grow from "@mui/material/Grow";
 
 const navItems = [
-  { label: "Home", icon: <HomeIcon />, href: "#" },
-  { label: "For Coaches", icon: <InfoIcon />, href: "#" },
-  { label: "Coach Levels", icon: <StarIcon />, href: "#" },
+  { label: "Find A Coach", icon: <HomeIcon />, href: "#" },
+  { label: "How it works", icon: <InfoIcon />, href: "#" },
   {
-    label: "Find Coaches",
+    label: "About Us",
     icon: <EmojiObjectsIcon />,
     href: "#",
   },
-  { label: "Coach Match Quiz", icon: <GroupIcon />, href: "#" },
-  { label: "Organizational Needs", icon: <HelpIcon />, href: "#" },
+  { label: "FAQ", icon: <GroupIcon />, href: "#" },
 ];
 
 const Header = () => {
@@ -63,6 +50,7 @@ const Header = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const toggleDrawer = () => setMobileOpen(!mobileOpen);
 
@@ -109,6 +97,64 @@ const Header = () => {
             {!isMobile ? (
               <>
                 <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                  <Box
+                    onMouseEnter={(e) => setAnchorEl(e.currentTarget)}
+                    onMouseLeave={() => setAnchorEl(null)}
+                    onClick={(e) => setAnchorEl(e.currentTarget)} // Also supports click
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        cursor: "pointer",
+                        fontWeight: 600,
+                        fontSize: "0.95rem",
+                        color: isSticky ? "neutral.black" : "primary.light",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "4px",
+                        "&:hover": {
+                          color: "primary.light",
+                        },
+                      }}
+                    >
+                      Coaching
+                      <KeyboardArrowDownIcon fontSize="small" />
+                    </Typography>
+
+                    <Menu
+                      anchorEl={anchorEl}
+                      open={Boolean(anchorEl)}
+                      onClose={() => setAnchorEl(null)}
+                      TransitionComponent={Grow} // <-- animation here
+                      MenuListProps={{
+                        onMouseEnter: () => setAnchorEl(anchorEl),
+                        onMouseLeave: () => setAnchorEl(null),
+                      }}
+                      anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "left",
+                      }}
+                      transformOrigin={{
+                        vertical: "top",
+                        horizontal: "left",
+                      }}
+                      sx={{ top: "30px" }}
+                    >
+                      <MenuItem onClick={() => setAnchorEl(null)}>
+                        Individual Coaching
+                      </MenuItem>
+                      <MenuItem onClick={() => setAnchorEl(null)}>
+                        Coaching For Organization
+                      </MenuItem>
+                      <MenuItem onClick={() => setAnchorEl(null)}>
+                        Train To Become A Coach
+                      </MenuItem>
+                    </Menu>
+                  </Box>
                   {navItems.map((item, index) => (
                     <Link
                       key={index}

@@ -46,7 +46,7 @@ const AIButton = ({text}) => {
           left: 0,
           width: "400%",
           background:
-            "linear-gradient(to right, #8f14e6, #e614dc, #e61453, #e68414, #e6e614)",
+            "linear-gradient(to right, #CB1C1B, #FF4939, #FCC380, #e68414, #e6e614)",
         }}
       />
     </Button>
