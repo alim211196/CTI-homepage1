@@ -96,7 +96,7 @@ const Header = () => {
             {/* Navigation Menu */}
             {!isMobile ? (
               <>
-                <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                <Box sx={{ display: "flex", alignItems: "center", gap: 4 }}>
                   <Box
                     onMouseEnter={(e) => setAnchorEl(e.currentTarget)}
                     onMouseLeave={() => setAnchorEl(null)}
